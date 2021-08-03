@@ -19,7 +19,6 @@ export const AppContainer = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-
 export const Button = styled.button`
   height: 3em;
   margin: 12px;
@@ -29,5 +28,5 @@ export const Button = styled.button`
     0 2px 4px -1px rgb(0 0 0 / 40%);
   background-color: white;
   border-color: rgb(0 0 0 / 12%);
-  cursor: grab;
+  cursor: pointer;
 `;
