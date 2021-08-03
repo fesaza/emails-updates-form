@@ -6,6 +6,10 @@ export const Container = styled.div`
     margin: auto;
 `;
 
+export const Header = styled.div`
+    margin: 0 0 2em;
+`;
+
 export const Title = styled.h1`
   color: #040404;
 `;

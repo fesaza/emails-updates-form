@@ -4,6 +4,7 @@ import * as yup from "yup";
 import {
   CheckInput,
   Container,
+  Header,
   Input,
   Row,
   SelectInput,
@@ -43,8 +44,10 @@ const EmailUpdatesForm = () => {
   const signUp = useStore((state) => state.signUp);
   return (
     <Container>
-      <Title>Sign up for email updates</Title>
-      <SubTitle>*Indicates required Field</SubTitle>
+      <Header>
+        <Title>Sign up for email updates</Title>
+        <SubTitle>*Indicates required Field</SubTitle>
+      </Header>
       <Formik
         initialValues={initialValues}
         validationSchema={formSchema}
