@@ -10,7 +10,7 @@ Firt install dependencies
 Then run the project:
 ### `npm start`
 
-This will start the web and the mock api
+This will start the web and the mock api and will open the browser automatically at  http://localhost:3000
 
 ---
 
