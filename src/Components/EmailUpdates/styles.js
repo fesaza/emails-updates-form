@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../Common/styles";
 
 export const Container = styled.div`
     width: auto;
@@ -39,17 +40,6 @@ export const SelectInput = styled.select`
     border: 3px solid #a3d1cd;
     outline: none;
   }
-`;
-
-export const Button = styled.button`
-  height: 3em;
-  margin: 12px;
-  min-width: 150px;
-  border-radius: 3em;
-  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%),
-    0 2px 4px -1px rgb(0 0 0 / 40%);
-  background-color: white;
-  border-color: rgb(0 0 0 / 12%);
 `;
 
 export const SubmitButton = styled(Button)`

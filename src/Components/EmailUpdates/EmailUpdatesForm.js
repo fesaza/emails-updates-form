@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 import {
-  Button,
   CheckInput,
   Container,
   Input,
@@ -13,7 +12,8 @@ import {
   Title,
 } from "./styles";
 import FormInput from "../Common/FormInput";
-import { ErrorText } from "../Common/styles";
+import { Button, ErrorText } from "../Common/styles";
+import useStore from "../../Stores/store";
 
 const initialValues = {
   firstName: "",
@@ -30,29 +30,36 @@ const formSchema = yup.object().shape({
   email: yup.string().email().required("Email is required"),
   organization: yup.string(),
   euResident: yup.string().required("EU Resident is required"),
-  options: yup
-    .array().min(1, "Please choose one option")
+  options: yup.array().min(1, "Please choose one option"),
 });
 
 const euResidentOptions = [
-  { value: "", description: "- SELECT AN OPTION" },
+  { value: "", description: "- SELECT AN OPTION -" },
   { value: "Yes", description: "YES" },
   { value: "No", description: "NO" },
 ];
 
 const EmailUpdatesForm = () => {
+  const signUp = useStore((state) => state.signUp);
   return (
     <Container>
       <Title>Sign up for email updates</Title>
       <SubTitle>*Indicates required Field</SubTitle>
-      <Formik initialValues={initialValues} validationSchema={formSchema}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={formSchema}
+        onSubmit={async (values, { setSubmitting }) => {
+          setSubmitting(true);
+          await signUp(values);
+          setSubmitting(false);
+        }}
+      >
         {({
           values,
           errors,
           touched,
           handleChange,
           handleBlur,
-          handleSubmit,
           isSubmitting,
           setFieldValue,
           resetForm,
@@ -128,7 +135,9 @@ const EmailUpdatesForm = () => {
                     value={values.euResident}
                   >
                     {euResidentOptions.map((o) => (
-                      <option key={o.value} value={o.value}>{o.description}</option>
+                      <option key={o.value} value={o.value}>
+                        {o.description}
+                      </option>
                     ))}
                   </SelectInput>
                   <div />
