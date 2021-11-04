@@ -1,19 +1,17 @@
+import { Route, Routes } from "react-router";
 import "./App.css";
-import { AppContainer, Button } from "./Components/Common/styles";
+import { AppContainer } from "./Components/Common/styles";
+import { UpdateResult } from "./Components/Common/UpdateResult";
 import EmailUpdatesForm from "./Components/EmailUpdates";
-import useStore from "./Stores/store";
 
 function App() {
-  const { singUpResult, backToForm } = useStore((state) => ({
-    singUpResult: state.result,
-    backToForm: state.reset,
-  }));
+  
   return (
     <AppContainer>
-      {singUpResult && !singUpResult.status && <EmailUpdatesForm />}
-      {singUpResult && singUpResult.status}
-      <div>{singUpResult && singUpResult.message}</div>
-      {singUpResult && singUpResult.status && <Button onClick={backToForm}>Return</Button>}
+      <Routes>
+        <Route path="/" element={<EmailUpdatesForm />} />
+        <Route path="/result" element={<UpdateResult />} />
+      </Routes>
     </AppContainer>
   );
 }

@@ -15,6 +15,7 @@ import {
 import FormInput from "../Common/FormInput";
 import { Button, ErrorText } from "../Common/styles";
 import useStore from "../../Stores/store";
+import { useNavigate } from "react-router";
 
 const initialValues = {
   firstName: "",
@@ -42,6 +43,7 @@ const euResidentOptions = [
 
 const EmailUpdatesForm = () => {
   const signUp = useStore((state) => state.signUp);
+  const navigate = useNavigate();
   return (
     <Container>
       <Header>
@@ -55,6 +57,7 @@ const EmailUpdatesForm = () => {
           setSubmitting(true);
           await signUp(values);
           setSubmitting(false);
+          navigate('/result');
         }}
       >
         {({
